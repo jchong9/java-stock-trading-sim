@@ -1,0 +1,2875 @@
+<?php
+  session_start();
+?>
+<!--
+  Jeremy Chong, Mika Vohl, and Krish Patel
+  05/31/2023
+  Summative homepage
+  This page allows the user to navigate through the entire summative website, providing them with information on various milestones we hit in the assignment, and how to use the program.
+-->
+<html>
+  <head>
+    <title>ICS4U-Summative</title>
+    <link href="https://fonts.cdnfonts.com/css/lato-black" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav> 
+      <ul>
+        <li><a href="index.php">HOME</a></li>
+        <li class="dropdown">
+          <span>MILESTONES&#9662;</span>
+          <div class='dropdown-content'>
+            <a href="milestones/milestone1.php"> MILESTONE 1</a>
+            <a href="milestones/milestone2.php">MILESTONE 2</a>
+            <a href="milestones/milestone3.php">MILESTONE 3</a>
+          </div>
+        </li>
+        <li><a href="help/index.php">HELP</a></li>
+        <li><a href="snippets/index.php">CODE SNIPPETS</a></li>
+        <li><a href="redirect.php">PLAY</a></li>
+        <li><a href="../code.txt">CODE</a></li>
+        <button id="btnRegister" onclick="window.location.href='registration/register.php'">REGISTER</button>
+        <button id="btnLogin" onclick="window.location.href='registration/login.php'">LOGIN</button>
+        <?php
+          if (!isset($_SESSION["loggedUser"])) { 
+            echo "<span id='logMsg'>Not logged in</span>"; 
+          } 
+          else {
+            echo "<span id='logMsg'>Logged in as: " .$_SESSION['loggedUser']. "</span>";
+          }  
+        ?>
+      </ul>
+    </nav>
+    <div id="homeBanner">
+      <h1>Stock Trading Simulator<br>
+        <span>A realistic experience for all.</span>
+      </h1>
+    </div>
+  </body>
+</html>
+<?php
+  session_start();
+?>
+<!--
+  Jeremy Chong, Mika Vohl, and Krish Patel
+  06/01/2023
+  Help page
+  This page shows the user how to navigate and use the stock trading simulator
+-->
+<html>
+  <head>
+    <title>ICS4U-Help</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav> 
+      <ul>
+        <li><a href="../index.php">HOME</a></li>
+        <li class="dropdown">
+          <span>MILESTONES&#9662;</span>
+          <div class='dropdown-content'>
+            <a href="../milestones/milestone1.php"> MILESTONE 1</a>
+            <a href="../milestones/milestone2.php">MILESTONE 2</a>
+            <a href="../milestones/milestone3.php">MILESTONE 3</a>
+          </div>
+        </li>
+        <li><a href="../help/index.php">HELP</a></li>
+        <li><a href="../snippets/index.php">CODE SNIPPETS</a></li>
+        <li><a href="../redirect.php">PLAY</a></li>
+        <li><a href="../code.txt">CODE</a></li>
+        <button id="btnRegister" onclick="window.location.href='../registration/register.php'">REGISTER</button>
+        <button id="btnLogin" onclick="window.location.href='../registration/login.php'">LOGIN</button>
+        <?php
+          if (!isset($_SESSION["loggedUser"])) { 
+            echo "<span id='logMsg'>Not logged in</span>"; 
+          } 
+          else {
+            echo "<span id='logMsg'>Logged in as: " .$_SESSION['loggedUser']. "</span>";
+          }  
+        ?>
+      </ul>
+    </nav>
+    <div class="divider"></div>
+    <!-- Content -->
+    <section>
+      <h1>Help</h1>
+      <h4>Register page</h4>
+      <p>
+        The first step in to register your account in the register page located in the top right of this website. Here, you will be prompted to enter your first name, last name, username, and password. Make sure you remember your username and password as that is what you will be using to access your stock trading account.
+      </p>
+      <img src="../images/register.png" class="helpImg">
+    </section>
+    <section>
+      <h4>Login page (on website)</h4>
+      <p>
+        The login page on the website serves as a tool to confirm your account is still valid. The login button is located right beside the register button. Once you enter your username and password, you will see the following screen and see who you are logged in as in the top right corner. 
+      </p>
+    </section>
+    <section>
+      <img src="../images/webLogin1.png" class="helpImg">
+      <img src="../images/webLogin2.png" class="helpImg">
+    </section>
+    <section>
+      <h4>Running the Application</h4>
+      <p>
+        To run the application. click the "PLAY" heading you see at the top of your screen. This will download a jar file to your device. Ensure that you have Java downloaded on your PC. Open this jar file and the Java application will appear.
+      </p>
+    </section>
+    <section>
+      <h4>Login page (on application)</h4>
+      <p>
+        This is the first page you will see when you open the trading application. As you may notice, there is no place for you to register. This is because the account you registered on the website is recognized by the program and will be the account you use to trade your stocks. This is why you must register on the website before opening the application. If there are errors with the login, an appropriate message will show, as you can see below:
+      </p>
+    </section>
+    <section>
+      <center><img src="../images/swingLogin1.png" height=450></center><br><br>
+      <img src="../images/swingLogin2.png" height=450>
+      <img src="../images/swingLogin3.png" height=450>
+    </section>
+    <section>
+      <h4>Menu page</h4>
+      <p>
+        After you log in, you a menu screen will show. This is how you will navigate around the stock trading app. You have three options on this screen. You can either view your portfolio, trade your stocks, or logout of your account.<br><br>
+        DISCLAIMER: DO NOT CLICK VIEW PROFILE MORE THAN ONCE IN A MINUTE.<br>We use an API to retrieve stock data in real time. Unfortunately, we do not have the funds to purchase a paid API, so we used a free one. With the free API comes limitations, and the major limitation is that we do not have many API calls available per minute. Opening the portfolio twice in the minute will not provide you will all the required information. If we were to publish this project, we would invest in an API that would be able to handle many API calls per minute.
+      </p>
+      <img src="../images/menu.png">
+    </section>
+    <section>
+      <h4>Portfolio</h4>
+      <p>
+        When you open your portfolio, you will get information about your trading account. At the top, you will see your balance which is the amount of cash you have in your acconut. Every new account will have $10,000 to play with at the start. Below that shows the last time the stock prices were updated. below that shows your all time profit and percent. This is based on your total portfolio value and comparing it to the original $10,000. Below that is the portfolio value which contains the current money value of all the stocks in your portfolio.<br><br>Below that are a list of all the stocks you own. You will see the full name, ticker symbol, and type of the stock on the left side, an you will the the current price/share, number of shares you have, and the total value you have of the stock. If the stock is a single stock, you will also see the earnings per share value here.
+      </p>
+      <img src="../images/portfolio.png"><img src="../images/portfolio2.png">
+    </section>
+    <section>
+      <h4>Trade</h4>
+      <p>
+        This is where you will be buying and selling stocks. You will be able to view your current balance at the top of the screen. Then you must select whether you want to buy or sell and enter the ticker symbol of the stock you want to buy/sell. Once you press "Select Stock", you will see the stock information of the left side. This is when you can you choose the quantity of the stock you would like to buy/sell. Once you press the "Buy" or "Sell" button, the action will go through and information on the screen will change (your balance and currently owned shares). There are input checkers throughout this page to make sure that a valid purchase is being made. An error will pop up if an incorrect input is submitted.<br><br>
+
+        Note: ETFs have a 0.5% buy tax, you will see this message when you attempt to buy an ETF.
+      </p>
+      <img src="../images/trade1.png"><img src="../images/trade6.png">
+      <h4>Buying a Stock</h4>
+      <img src="../images/trade2.png"><img src="../images/trade3.png"><br>
+      <h4>Selling a Stock</h4>
+      <img src="../images/trade4.png"><img src="../images/trade5.png"><br>
+    </section>
+  </body>
+</html>
+<?php
+  session_start();
+?>
+<!--
+  Jeremy Chong, Mika Vohl, and Krish Patel
+  05/31/2023
+  Milestone 1 homepage
+  This page shows the user the objective of the program and the planning stages of this summative assignment.
+-->
+<html>
+  <head>
+    <title>ICS4U-Milestone1</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav> 
+      <ul>
+        <li><a href="../index.php">HOME</a></li>
+        <li class="dropdown">
+          <span>MILESTONES&#9662;</span>
+          <div class='dropdown-content'>
+            <a href="milestone1.php"> MILESTONE 1</a>
+            <a href="milestone2.php">MILESTONE 2</a>
+            <a href="milestone3.php">MILESTONE 3</a>
+          </div>
+        </li>
+        <li><a href="../help/index.php">HELP</a></li>
+        <li><a href="../snippets/index.php">CODE SNIPPETS</a></li>
+        <li><a href="../redirect.php">PLAY</a></li>
+        <li><a href="../code.txt">CODE</a></li>
+        <button id="btnRegister" onclick="window.location.href='../registration/register.php'">REGISTER</button>
+        <button id="btnLogin" onclick="window.location.href='../registration/login.php'">LOGIN</button>
+        <?php
+          if (!isset($_SESSION["loggedUser"])) { 
+            echo "<span id='logMsg'>Not logged in</span>"; 
+          } 
+          else {
+            echo "<span id='logMsg'>Logged in as: " .$_SESSION['loggedUser']. "</span>";
+          }  
+        ?>
+      </ul>
+    </nav>
+    <div class="divider"></div>
+    <!-- Content -->
+    <section>
+      <h2>Objective of the Program</h2>
+      <p>
+        The overall objective of this project is to create a stock trading simulator. This project will provide users with a platform to practice trading stocks without the risk of losing money in real life. This simulator will imitate real stock market conditions and allow users to learn more about stocks. It can also further improve their stock trading skills by practicing with and analyzing the simulated data. Through the use of Java, PHP, and HTML, those interested in stock trading will be given a realistic and practical learning experience, which can help them develop various skills, test strategies, and gain confidence before participating in real-world trading.
+      </p>
+    </section>
+    <section>
+      <h2>Inputs & Outputs</h2>
+      <h3>Inputs</h3>
+      <ul>
+        <li>Giving the user an option to login/register into the program.</li>
+        <li>Checking whether the user wants to buy/sell a stock.</li>
+        <li>Providing the user with an option to place orders.</li>
+        <li>Allowing the user ot check the price of stocks.</li>
+      </ul>
+      <h3>Outputs</h3>
+      <ul>
+        <li>Displaying a well-designed GUI for the user to navigate around the program and to login/register.</li>
+        <li>Allowing the user to track their current holdings and monitor their stock performance.</li>
+        <li>Displaying the user with a portfolio, along with company news to provide the user information to buy/sell.</li>
+        <li>Displaying if the stock is up/down for the day.</li>
+        <li>Displaying a leaderboard of all the user's estimated stock values.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Assumptions/Special Considerations</h2>
+      <ul>
+        <li>There are restrictions on the number of trades that can be made within a day and the number of shares that can be traded.</li>
+        <li>Users can only trade during specific times within the program.</li>
+        <li>After the user loses all their money, they will still be able to sell and buy stocks.</li>
+        <li>The user will never become bankrupt, unless all the companies they have invested in file for bankruptcy.</li>
+        <li>The user will start off with $10,000.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Group Contributions</h2>
+      <h3>Mika</h3>
+      <ul>
+        <li><b>Lead programmer</b></li>
+        <li>Mika will be responsible for applying SpringBoot to the program, which is an open-source tool that utilizes Java-based frameworks to create web applications and microservices.</li>
+        <li>He will also be debugging/fixing any issues that may arise when incorporating the tool.</li>
+      </ul>
+      <h3>Krish</h3>
+      <ul>
+        <li><b>Project manager</b></li>
+        <li>Krish will be responsible for integrating the stock API for the program and helping with the SpringBoot code.</li>
+        <li>He will also design the preliminary plans for the program and help incorporate OOP concepts for the simulator.</li>
+      </ul>
+      <h3>Jeremy</h3>
+      <ul>
+        <li><b>Software designer</b></li>
+        <li>Jeremy will be responsible for designing the GUI of the simulator, along with the website, and creating the PHP side of the program.</li>
+        <li>He will also help debug/fix any issues related to the main program.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>How We Will Use PHP</h2>
+      <p>
+        PHP will be used to register the user into the program and allow them to login. This will allow the program to keep track of users and their current holdings, which can allow them to continue where they left off from previous simulations.
+      </p>
+    </section>
+   <section>
+      <h2>How We Will Use Sort & Search</h2>
+      <h3>Sorting</h3>
+      <p>
+        The user's stocks will be sorted from the lowest money invested within the stock to the greatest (their greatest investment will be displayed at the top of their screen). The leaderboard of all the user's estimated stock values will also be sorted from lowest to greatest.
+      </p>
+      <h3>Searching</h3>
+      <p>
+        The user will be able to search for specific stocks through the use of a searching algorithm. Also, the user's information can be found with a search algorithm after logging in.
+      </p>
+    </section>
+   <section>
+      <h2>How We Will Use Encryption</h2>
+      <p>
+        The user's data, such as the password for their account, will be encrypted into a file. This data will then be decrypted to ensure that the user has logged in with the correct credentials.
+      </p>
+    </section>
+   <section>
+      <h2>How We Will Use Recursion</h2>
+      <p>
+        Recursion will be implemented when buying a certain number of stocks. The recursive function will update the user's portfolio while buying til it reaches how many the user wants to get. The base case can be the number of shares that the user wants to buy, and in the body of the function, it will update their portfolio through various calculations. 
+        <br><br>
+        A recursive search method may also be implemented to search for a stock that a user would like to view.
+      </p>
+    </section>
+  </body>
+</html>
+<?php
+  session_start();
+?>
+<!--
+  Jeremy Chong, Mika Vohl, and Krish Patel
+  06/012023
+  Milestone 2 homepage
+  This page shows the user UML of all the classes planned out so far in this stage. This will provide them will a good sense of how OOP will be used within the program, such as abstract classes, and interfaces.
+-->
+<html>
+  <head>
+    <title>ICS4U-Milestone2</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav> 
+      <ul>
+        <li><a href="../index.php">HOME</a></li>
+        <li class="dropdown">
+          <span>MILESTONES&#9662;</span>
+          <div class='dropdown-content'>
+            <a href="milestone1.php"> MILESTONE 1</a>
+            <a href="milestone2.php">MILESTONE 2</a>
+            <a href="milestone3.php">MILESTONE 3</a>
+          </div>
+        </li>
+        <li><a href="../help/index.php">HELP</a></li>
+        <li><a href="../snippets/index.php">CODE SNIPPETS</a></li>
+        <li><a href="../redirect.php">PLAY</a></li>
+        <li><a href="../code.txt">CODE</a></li>
+        <button id="btnRegister" onclick="window.location.href='../registration/register.php'">REGISTER</button>
+        <button id="btnLogin" onclick="window.location.href='../registration/login.php'">LOGIN</button>
+        <?php
+          if (!isset($_SESSION["loggedUser"])) { 
+            echo "<span id='logMsg'>Not logged in</span>"; 
+          } 
+          else {
+            echo "<span id='logMsg'>Logged in as: " .$_SESSION['loggedUser']. "</span>";
+          }  
+        ?>
+      </ul>
+    </nav>
+    <div class="divider"></div>
+    <!-- Content -->
+    <section>
+      <h1>Object Analysis and Overview</h1>
+      <img id="uml" src="../images/uml.png">
+    </section>
+    <section>
+      <h1>UML Specifications</h1>
+    </section>
+    <section>
+      <h3>Note:</h3>
+      <p>
+        Bolded text with the @ symbol next to it in the UML are special notes about the method (i.e whether the method is overridden, overloaded, etc).
+      </p>
+    </section>
+    <section>
+      <h3>Taxable Interface</h3>
+      <p>
+        The Taxable interface was created since not all stocks are taxed. Since we want to separate taxable and not taxable stocks, the interface provides easier readability and more abstraction to our program, as more stock classes may be added in the future.
+      </p>
+    </section>
+    <section>
+      <h3>User Class</h3>
+      <p>
+        Since the user is not a stock or a marketable item in the stock market, it is outside of the market hierarchy of the UML. The user class will provide the user with all the capabilities necessary for them to navigate and interact with the stock trading simulator.
+      </p>
+    </section>
+  </body>
+</html>
+<?php
+  session_start();
+?>
+<!--
+  Jeremy Chong, Mika Vohl, and Krish Patel
+  06/01/2023
+  Milestone 3 homepage
+  This page shows the user 
+-->
+<html>
+  <head>
+    <title>ICS4U-Milestone3</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav> 
+      <ul>
+        <li><a href="../index.php">HOME</a></li>
+        <li class="dropdown">
+          <span>MILESTONES&#9662;</span>
+          <div class='dropdown-content'>
+            <a href="milestone1.php"> MILESTONE 1</a>
+            <a href="milestone2.php">MILESTONE 2</a>
+            <a href="milestone3.php">MILESTONE 3</a>
+          </div>
+        </li>
+        <li><a href="../help/index.php">HELP</a></li>
+        <li><a href="../snippets/index.php">CODE SNIPPETS</a></li>
+        <li><a href="../redirect.php">PLAY</a></li>
+        <li><a href="../code.txt">CODE</a></li>
+        <button id="btnRegister" onclick="window.location.href='../registration/register.php'">REGISTER</button>
+        <button id="btnLogin" onclick="window.location.href='../registration/login.php'">LOGIN</button>
+        <?php
+          if (!isset($_SESSION["loggedUser"])) { 
+            echo "<span id='logMsg'>Not logged in</span>"; 
+          } 
+          else {
+            echo "<span id='logMsg'>Logged in as: " .$_SESSION['loggedUser']. "</span>";
+          }  
+        ?>
+      </ul>
+    </nav>
+    <div class="divider"></div>
+    <!-- Content -->
+    <section>
+      <h2>PHP Implementations</h2>
+      <h4>How PHP was implemented in this project:</h4>
+      <p>
+        Forms were used to help the user log in and register into the website with a username and password that they have created. The password is then encrypted using the Caesar cipher algorithm on the backend of PHP and is stored in a JSON file along with other information, such as the user's first name and username. In the backend of the login page, the password is decrypted to check if the user's input matches with the database. This is done by converting the JSON file into an associative array using the json_decode() method and accessing the encrypted password as an element, which is then decrypted to check if it matches with the user's input to ensure proper logins. Below displays the form for the login and registration pages, and the PHP code that checks if the input is valid. Once the input is checked, it is then put into the JSON file.
+      </p>
+    </section>
+    <section>
+      <img src="../images/form1.png">
+      <img src="../images/form2.png">
+    </section>
+    <section>
+      <img src="../images/php1.png">
+      <img src="../images/php2.png">
+    </section>
+    <section>
+      <p>
+        Session variables were also used to keep the user logged in. From the images above, after a valid input is confirmed, the current user will be stored in a variable with PHP (using the $_SESSION associative array). This variable is then used to display a message to the user to show that they are currently logged in.
+      </p>
+      <img src="../images/php3.png">
+    </section>
+    <section>
+      <h4>File input & output in PHP</h4>
+      <p>
+        File input was used to read from the JSON file that holds all of the registered users. This data is then used to check if the user exists and logs them into the website.
+      </p>
+      <img src="../images/input.png">
+      <p>
+        File output was used to add a new user to the JSON file after they have registered. 
+      </p>
+      <img src="../images/output.png">
+    </section>
+    <section>
+      <h4>2D arrays in PHP</h4>
+      <p>
+        The users data is held in a 2D associative array. The users array holds an array of their data. This 2D array is used to parse the JSON file and add to its contents.
+      </p>
+      <img src="../images/2darrays.png">
+    </section>
+    <section>
+      <h2>What Was Left Out</h2>
+      <h4>Ideas that were not implemented in the final product:</h4>
+      <p>
+        Originally, SpringBoot was going to be used as the framework for the simulator. However, it was not implemented due to the limited environment provided by Replit and networking limitations. As a result, Java Swing was used instead to create the program in order to provide the user with a similar graphical interface. Additionally, due to time constraints, the company news feature was not implemented. This feature would allow the user to see positive/negative news about companies, which would provide insight into whether the user should buy/sell/keep.
+      </p>
+    </section>
+  </body>
+</html>
+<?php
+  session_start();
+?>
+<!--
+  Jeremy Chong, Mika Vohl, and Krish Patel
+  05/31/2023
+  Login page
+  This page allows the user to login into the website and access their portfolio in the game.
+-->
+<html>
+  <head>
+    <title>ICS4U-Login</title>
+    <link href="https://fonts.cdnfonts.com/css/lato-black" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav> 
+      <ul>
+        <li><a href="../index.php">HOME</a></li>
+        <li class="dropdown">
+          <span>MILESTONES&#9662;</span>
+          <div class='dropdown-content'>
+            <a href="../milestones/milestone1.php"> MILESTONE 1</a>
+            <a href="../milestones/milestone2.php">MILESTONE 2</a>
+            <a href="../milestones/milestone3.php">MILESTONE 3</a>
+          </div>
+        </li>
+        <li><a href="../help/index.php">HELP</a></li>
+        <li><a href="../snippets/index.php">CODE SNIPPETS</a></li>
+        <li><a href="../redirect.php">PLAY</a></li>
+        <li><a href="../code.txt">CODE</a></li>
+        <button id="btnRegister" onclick="window.location.href='register.php'">REGISTER</button>
+        <button id="btnLogin" onclick="window.location.href='login.php'">LOGIN</button>
+        <?php
+          if (!isset($_SESSION["loggedUser"])) { 
+            echo "<span id='logMsg'>Not logged in</span>"; 
+          } 
+          else {
+            echo "<span id='logMsg'>Logged in as: " .$_SESSION['loggedUser']. "</span>";
+          }  
+        ?>
+      </ul>
+    </nav>
+    <form class="registerModal" action="loginCheck.php" method="post">
+      <h2>Welcome back! Login here</h2>
+      Username:<br>
+      <input type="text" name="username" required><br>
+      Password:<br>
+      <input type="password" name="password" required><br><br>
+      <input type="submit" value="SUBMIT"><br><br>
+      <a href="register.php">Don't have an account?</a>
+    </form>
+  </body>
+</html>
+<?php
+  session_start();
+?>
+<!--
+  Jeremy Chong, Mika Vohl, and Krish Patel
+  05/31/2023
+  Login confirmation page
+  This page checks if the user exists in the registered users and allows them to log into the website. It displays an appropriate message for each case.
+-->
+<html>
+  <head>
+    <title>ICS4U-LoginConfirmation</title>
+    <link href="https://fonts.cdnfonts.com/css/lato-black" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav> 
+      <ul>
+        <li><a href="../index.php">HOME</a></li>
+        <li class="dropdown">
+          <span>MILESTONES&#9662;</span>
+          <div class='dropdown-content'>
+            <a href="../milestones/milestone1.php"> MILESTONE 1</a>
+            <a href="../milestones/milestone2.php">MILESTONE 2</a>
+            <a href="../milestones/milestone3.php">MILESTONE 3</a>
+          </div>
+        </li>
+        <li><a href="../help/index.php">HELP</a></li>
+        <li><a href="../snippets/index.php">CODE SNIPPETS</a></li>
+        <li><a href="../redirect.php">PLAY</a></li>
+        <li><a href="../code.txt">CODE</a></li>
+        <button id="btnRegister" onclick="window.location.href='register.php'">REGISTER</button>
+        <button id="btnLogin" onclick="window.location.href='login.php'">LOGIN</button>
+        <?php
+          if (!isset($_SESSION["loggedUser"])) { 
+            echo "<span id='logMsg'>Not logged in</span>"; 
+          } 
+          else {
+            echo "<span id='logMsg'>Logged in as: " .$_SESSION['loggedUser']. "</span>";
+          }  
+        ?>
+      </ul>
+    </nav>
+    <?php
+      $file = "../data/users.json";
+      $username = $_POST["username"];
+      $password = $_POST["password"];
+      $found = false;
+
+      //Reads json file and gets its contents
+      $json = json_decode(file_get_contents($file), true);
+
+      //This function decrypts data so that the original text can be used by the program.
+      function decrypt($string, $key) {
+        $length = strLen($string);
+        
+        for ($k = 0; $k < $length; $k++) {
+          $ascii = ord($string[$k]);
+          $string[$k] = chr($ascii - $key);
+        }
+
+        return $string;
+      }
+
+      //If json is empty
+      if ($json == []) {
+        echo "<div class='checkModal'>
+                <h2>No accounts have been made! Create an account</h2>
+                <a href='register.php'>Register here</a>
+              </div>";
+      }
+      else {
+        //Check if user has an account
+        for ($j = 0; $j < count($json['users']); $j++) {
+          if (strcasecmp($json['users'][$j]['username'], trim($username)) == 0) {
+            //Decrypts the encrypted password and checks if the user's input matches with it
+            $realPassword = decrypt($json['users'][$j]['password'], 2);
+            if (strcasecmp($realPassword, trim($password)) == 0) {
+              echo "<div class='checkModal'>
+                      <h2>Welcome back, ". $json['users'][$j]['first']. "!</h2>
+                      <a href='../index.php'>Return to home</a>
+                    </div>";
+              $found = true;
+              $_SESSION["loggedUser"] = $username;
+              break;
+            }
+            else {
+              echo "<div class='checkModal'>
+                      <h2>Wrong password! Return to login and try again</h2>
+                      <a href='login.php'>Login here</a>
+                    </div>";
+              $found = true;
+              break;
+            }
+          }
+        }
+        //If the user is not found within the database, invalid inputs
+        if (!$found) {
+          echo "<div class='checkModal'>
+                  <h2>Your account does not exist, try making one!</h2>
+                  <a href='register.php'>Register here</a>
+                </div>";
+        }
+      }
+    ?>
+  </body>
+</html>
+<?php
+  session_start();
+?>
+<!--
+  Jeremy Chong, Mika Vohl, and Krish Patel
+  05/31/2023
+  Register page
+  This page allows the user to create their own account and register into the program.
+-->
+<html>
+  <head>
+    <title>ICS4U-Register</title>
+    <link href="https://fonts.cdnfonts.com/css/lato-black" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav> 
+      <ul>
+        <li><a href="../index.php">HOME</a></li>
+        <li class="dropdown">
+          <span>MILESTONES&#9662;</span>
+          <div class='dropdown-content'>
+            <a href="../milestones/milestone1.php"> MILESTONE 1</a>
+            <a href="../milestones/milestone2.php">MILESTONE 2</a>
+            <a href="../milestones/milestone3.php">MILESTONE 3</a>
+          </div>
+        </li>
+        <li><a href="../help/index.php">HELP</a></li>
+        <li><a href="../snippets/index.php">CODE SNIPPETS</a></li>
+        <li><a href="../redirect.php">PLAY</a></li>
+        <li><a href="../code.txt">CODE</a></li>
+        <button id="btnRegister" onclick="window.location.href='register.php'">REGISTER</button>
+        <button id="btnLogin" onclick="window.location.href='login.php'">LOGIN</button>
+        <?php
+          if (!isset($_SESSION["loggedUser"])) { 
+            echo "<span id='logMsg'>Not logged in</span>"; 
+          } 
+          else {
+            echo "<span id='logMsg'>Logged in as: " .$_SESSION['loggedUser']. "</span>";
+          }  
+        ?>
+      </ul>
+    </nav>
+    <form class="registerModal" action="registerCheck.php" method="post">
+      <h2>New user? Sign up</h2>
+      First name:<br>
+      <input type="text" name="firstName" required><br>
+      Last name:<br>
+      <input type="text" name="lastName" required><br>
+      Username:<br>
+      <input type="text" name="username" required><br>
+      Password:<br>
+      <input type="password" name="password" required><br><br>
+      <input type="submit" value="SUBMIT"><br><br>
+      <a href="login.php">Already have an account?</a>
+    </form>
+  </body>
+</html>
+<?php
+  session_start();
+?>
+<!--
+  Jeremy Chong, Mika Vohl, and Krish Patel
+  05/31/2023
+  Register confirmation page
+  This page checks if the user's registration is valid or not and displays an appropriate message for each case.
+-->
+<html>
+  <head>
+    <title>ICS4U-RegisterConfirmation</title>
+    <link href="https://fonts.cdnfonts.com/css/lato-black" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav> 
+      <ul>
+        <li><a href="../index.php">HOME</a></li>
+        <li class="dropdown">
+          <span>MILESTONES&#9662;</span>
+          <div class='dropdown-content'>
+            <a href="../milestones/milestone1.php"> MILESTONE 1</a>
+            <a href="../milestones/milestone2.php">MILESTONE 2</a>
+            <a href="../milestones/milestone3.php">MILESTONE 3</a>
+          </div>
+        </li>
+        <li><a href="../help/index.php">HELP</a></li>
+        <li><a href="../snippets/index.php">CODE SNIPPETS</a></li>
+        <li><a href="../redirect.php">PLAY</a></li>
+        <li><a href="../code.txt">CODE</a></li>
+        <button id="btnRegister" onclick="window.location.href='register.php'">REGISTER</button>
+        <button id="btnLogin" onclick="window.location.href='login.php'">LOGIN</button>
+        <?php
+          if (!isset($_SESSION["loggedUser"])) { 
+            echo "<span id='logMsg'>Not logged in</span>"; 
+          } 
+          else {
+            echo "<span id='logMsg'>Logged in as: " .$_SESSION['loggedUser']. "</span>";
+          }  
+        ?>
+      </ul>
+    </nav>
+    <?php
+      $file = "../data/users.json";
+      $firstName = $_POST["firstName"];
+      $lastName = $_POST["lastName"];
+      $username = $_POST["username"];
+      $password = $_POST["password"];
+      $found = false;
+
+      //Reads json file and gets its contents
+      $json = json_decode(file_get_contents($file), true);
+
+      //A function that adds users into the json file
+      function addUser() {
+        global $file, $firstName, $lastName, $username, $password, $json;
+        
+        $username = trim($username);
+        $password = encrypt(trim($password), 2);
+
+        //Adds a new array that holds the new user's information
+        $json['users'][] = array(
+          'first'=>$firstName, 
+          'last'=>$lastName,
+          'username'=>$username,
+          'password'=>$password
+        );
+        //Puts the new data back into the json file
+        file_put_contents($file, json_encode($json));
+      }
+
+      //This function encrypts a string for improved data security based off a key
+      function encrypt($string, $key) {
+        $length = strLen($string);
+        
+        for ($k = 0; $k < $length; $k++) {
+          $ascii = ord($string[$k]);
+          $string[$k] = chr($ascii + $key);
+        }
+
+        return $string;
+      }
+
+      //If the username is too long, shorten it
+      if (strlen($username) > 15) {
+        $username = substr($username, 15);
+      }
+      //If the json file is empty
+      if ($json == []) {
+        echo "<div class='checkModal'>
+                <h2>Welcome to the stock trading simulator, $firstName!</h2>
+                <a href='../index.php'>Return to home</a>
+              </div>";
+        addUser();
+        $_SESSION["loggedUser"] = $username;
+      }
+      else {
+        //Iterate through each user
+        for ($i = 0; $i < count($json['users']); $i++) {
+          //Check if the user already exists
+          if ($json['users'][$i]['username'] == $username) {
+            $found = true;
+          echo "<div class='checkModal'>
+                  <h2>This user already exists!</h2>
+                  <a href='login.php'>Login here</a>
+                </div>";
+            break;
+          }
+        }
+        //If the user is not an already existing user, allow them to register
+        if (!$found) {
+          echo "<div class='checkModal'>
+                  <h2>Welcome to the stock trading simulator, $firstName!</h2>
+                  <a href='../index.php'>Return to home</a>
+                </div>";
+          addUser();
+          $_SESSION["loggedUser"] = $username;
+        }
+      }
+    ?>
+  </body>
+</html>
+<?php
+  session_start();
+?>
+<?php
+  session_start();
+?>
+<!--
+  Jeremy Chong, Mika Vohl, and Krish Patel
+  06/01/2023
+  Milestone 3 homepage
+  This page shows the user code snippets of how we implemented OOP into our program.
+-->
+<html>
+  <head>
+    <title>ICS4U-Snippets</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav> 
+      <ul>
+        <li><a href="../index.php">HOME</a></li>
+        <li class="dropdown">
+          <span>MILESTONES&#9662;</span>
+          <div class='dropdown-content'>
+            <a href="../milestones/milestone1.php"> MILESTONE 1</a>
+            <a href="../milestones/milestone2.php">MILESTONE 2</a>
+            <a href="../milestones/milestone3.php">MILESTONE 3</a>
+          </div>
+        </li>
+        <li><a href="../help/index.php">HELP</a></li>
+        <li><a href="../snippets/index.php">CODE SNIPPETS</a></li>
+        <li><a href="../redirect.php">PLAY</a></li>
+        <li><a href="../code.txt">CODE</a></li>
+        <button id="btnRegister" onclick="window.location.href='../registration/register.php'">REGISTER</button>
+        <button id="btnLogin" onclick="window.location.href='../registration/login.php'">LOGIN</button>
+        <?php
+          if (!isset($_SESSION["loggedUser"])) { 
+            echo "<span id='logMsg'>Not logged in</span>"; 
+          } 
+          else {
+            echo "<span id='logMsg'>Logged in as: " .$_SESSION['loggedUser']. "</span>";
+          }  
+        ?>
+      </ul>
+    </nav>
+    <div class="divider"></div>
+    <!-- Content -->
+    <section>
+      <h1>OOP Implementations</h1>
+      <h3>Encapsulation</h3>
+      <p>
+        Visibility modifiers are used in the User class to limit the scope of the instance variables to within the class. Certain instance variables, such as first name, are set as private. Since we do not want the user to directly access their name or balance, the visibility modifiers are set as private. Certain methods are sLet as public because we want to access those methods anywhere in the program. These methods may include access methods, and other methods like buying/selling stocks. 
+      </p>
+      <img src="../images/encapsulation.png">
+    </section>
+    <section>
+      <h3>Inheritance</h3>
+      <p>
+        Inheritance is a mechanism in OOP where classes can inherit the properties and behaviours of other classes. The ETF class extends from the abstract Stock class to inherit its properties. Since ETFs are stocks, they inherit the private properties of the stock class. 
+      </p>
+      <img src="../images/inheritance.png">
+    </section>
+    <section>
+      <h3>Polymorphism</h3>
+      <p>
+        Polymorphism is the ability of an object to take many forms. The stock variable is created as a reference variable to the Stock class. This allows this variable to hold data that are also descendants of Stock. The stock variable is then refers to a SingleStock or ETF depending on what type the stock is. This allows the stock variable to be more flexible and reusable throughout the program.
+      </p>
+      <img src="../images/overloading2.png">
+    </section>
+    <section>
+      <h3>Abstract Classes</h3>
+      <p>
+        An abstract class is created for stocks. Since all stocks have a ticker, full name, and the number of shares, the abstract class organizes and groups related classes, such as single stocks, and ETFs. This class was also made abstract, since we do not need a stock object, but rather a specific type of stock.
+      </p>
+      <img src="../images/abstract.png">
+    </section>
+    <section>
+      <h3>Interfaces</h3>
+      <p>
+        An interface is used for the Java Swing pages. The user variable is a constant since the current user remains the same unless they logout. The deletePage() method is used for each page to switch from page to page and each page overrides this method. 
+      </p>
+      <img src="../images/interface.png">
+    </section>
+    <section>
+      <h3>Method Overriding</h3>
+      <p>
+        Method overriding is used to override the method from the Page interface. This method "deletes" the current page by making the Java Swing panel invisible and destroying the Java Swing frame.
+      </p>
+      <img src="../images/override.png">
+    </section>
+    <section>
+      <h3>Method Overloading</h3>
+      <p>
+        Method overloading is used for the constructors of the SingleStock class. The second constructor is created with a different signature if the type of stock is unknown.
+      </p>
+    </section>
+    <section>
+      <img src="../images/overloading1.png">
+    </section>
+    <section>
+      <h3>Static</h3>
+      <p>
+        Static refers to a member of a class that belongs to the class definition, and not the object. The background color variables are made into static constants since they do not need to be apart of an object and does not change. These variables can also be accessed anywhere from the code due to their public visibility modifier. 
+      </p>
+      <img src="../images/static.png">
+    </section>
+    <section>
+      <h3>Constants</h3>
+      <p>
+        A constant is used for the fee percentage for the ETF stocks. This is made a constant since it does not change at all throughout the program.
+      </p>
+      <img src="../images/constant.png">
+    </section>
+    <section>
+      <h3>Object Parameters</h3>
+      <p>
+        A new user object is created in the Login page using its constructor. The constructor initializes its instance variables, such as username and portfolio, so it can be used in other classes.
+      </p>
+    </section>
+    <section>
+      <img src="../images/objectParam1.png">
+      <img src="../images/objectParam2.png">
+    </section>
+    <section>
+      <h3>Immutability</h3>
+      <p>
+        Immutability refers to the concept of creating objects whose state cannot be modified once they are created. In Java, immutability is achieved by designing classes and objects in such a way that their internal state remains constant after initialization. Here, we created an instance of a String object that is immutable. By combining the final modifier with an immutable String object, the code ensures that the apiKey value cannot be changed once it is assigned. This immutability guarantees that the value of apiKey remains constant throughout the execution of the program.
+      </p>
+      <img src="../images/immutable.png">
+    </section>
+    <section>
+      <h3>Access Methods</h3>
+      <p>
+        Access methods are methods that allow the programmer to access private or restricted data. In this case, the image displays the access methods of the User class. These methods allow other classes to get important data from the current user, such as their balance. This prevents others from directly changing this private information. 
+      </p>
+      <img src="../images/access.png">
+    </section>
+    <section>
+      <h3>Instance Variables</h3>
+      <p>
+        Instance variables are variables that is specific to an object. In this case, the image displays the instance variables of the MainMenu class. These instance variables are necessary to create and style the pages of the main menu using Java Swing. A Portfolio and Trade object is created as well so that the main menu can access both pages. 
+      </p>
+      <img src="../images/instance.png">
+    </section>
+    <!-- Content for algorithm implementations -->
+    <section>
+      <h1>Algorithm Implementations</h1>
+      <h3>Searching</h3>
+      <p>
+        Binary search is implemented into the program by checking if the ticker symbol of a stock exists within a portfolio. The portfolio is sorted by alphabetical order beforehand, and the search continously checks if the target is in the middle of the arraylist. If not, then the algorithm will split the search space in half until the element is found or is determined that it does not exist in the list.
+      </p>
+      <img src="../images/search.png">
+    </section>
+    <section>
+      <h3>Sorting</h3>
+      <p>
+        Quick sort is implemented into the program by sorting the user's portfolio from least to greatest value of the owned stock. The algorithm partitions the array into 2 sub-arrays using a pivot, and then recursively sorts each sub-array.
+      </p>
+      <img src="../images/sorting.png">
+    </section>
+    <section>
+      <h3>Encryption/Decryption</h3>
+      <p>
+        Encryption is used to encrypt passwords after the user registers in the website. If the user gets access to the registered users file, they would not know the users' actual password since it is encrypted. 
+        <br><br>
+        Decryption is used to decrypt passwords once the user logs into the stock trading simulator. This ensures that the entered password matches with the actual password that the user used to register.
+      </p>
+    </section>
+    <section>
+      <img src="../images/encrypt.png">
+      <img src="../images/decrypt.png">
+    </section>
+    <section>
+      <h3>Recursion</h3>
+      <p>
+        Recursion is used to calculate the total value of the user's portfolio. Similarly to a loop, the function starts at the beginning of the stock arraylist using an index parameter and adds the value to the portfolioValue parameter. The function is then recursively called, and this index is incremented every call. The base case is if the index reaches the arraylist size.
+      </p>
+      <img src="../images/recursion.png">
+    </section>
+  </body>
+</html>
+<!--
+  Jeremy Chong, Krish Patel, Mika Vohl
+  06/14/2023
+  Data page
+  This holds the JSON file for PHP and allows the Java file to access this file.
+-->
+<?php
+  $jsonData = file_get_contents('data/users.json');
+  
+  header('Content-Type: application/json');
+  echo $jsonData;
+?>
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+  Jeremy Chong, Krish Patel, and Mika Vohl
+  06/14/2023
+  ETF
+  This file is what is used to make an ETF object in our project
+*/
+
+package backend;
+
+// ETF inherits abstract class Stock
+public class ETF extends Stock {
+    // 0.5% buy and sell tax on ETFs
+    public static final float feePercent = 0.5f;
+
+    // ETF constructor, all of these instance variables are initialized in the abstract Stock class that ETF inherits from
+    public ETF(String ticker, int shares, String type) {
+        this.ticker = ticker;
+        this.shares = shares;
+        this.type = type;
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+package backend;
+
+import java.io.*;
+import java.net.*;
+import org.json.JSONObject;
+import org.json.JSONArray;
+import java.util.*;
+import java.text.*;
+
+// this class will contain static variables and methods that will be used throughout the project
+// it will get different pieces of stock data using APIs
+public class GetStockInfo {
+    // API key for Finnhub
+    public final static String apiKey = new String("ci3o721r01ql8aaulc20ci3o721r01ql8aaulc2g");
+
+    // this method will be called throughout this class to send and HTTP request to the Finnhub API and get the JSON of the information
+    private static String getStockData(String ticker) throws Exception {
+        // creates API URL at which the stock data is located in
+        String apiUrl = "https://finnhub.io/api/v1/quote?symbol=" + ticker + "&token=" + apiKey;
+
+        // sends an HTTP request to acquire the JSON
+        URL url = new URL(apiUrl);
+        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+        connection.setRequestMethod("GET");
+        BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        String response = "";
+        String line = null;
+        do {
+            line = br.readLine();
+            response += line;
+        } while(line != null);
+
+        br.close();
+        return response; // returns a string containing the full JSON file
+    }
+    // gets the price of the stock based on the ticker
+    public static double getPrice(String ticker) throws Exception {
+        String response = getStockData(ticker);
+        JSONObject jsonObject = new JSONObject(response);
+        return jsonObject.getDouble("c"); // "c" represents the current price in the response JSON
+    }
+
+    // get the full name of a stock based on its ticker symbol
+    public static String getFullName(String ticker) throws Exception {
+        // we must use two APIs as finnhub does not has access to ETF stock data
+        String apiUrl = null;
+        boolean isETF = false;
+        if(GetStockInfo.getType(ticker).equals("ETF")) {
+            apiUrl = "https://cloud.iexapis.com/stable/stock/" + ticker + "/company?token=pk_8d10e34ff65e445381cba45c5e979c84";
+            isETF = true;
+        }
+        else {
+            apiUrl = "https://finnhub.io/api/v1/stock/profile2?symbol=" + ticker + "&token=" + apiKey;
+        }
+
+        // sends an HTTP request to the corresponding URL, depending on if it's an ETF or not
+        URL url = new URL(apiUrl);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        String response = "";
+        String line = null;
+
+        do {
+            line = br.readLine();
+            response += line;
+        } while(line != null);
+        br.close();
+
+        JSONObject jsonObject = new JSONObject(response); // creates a JSONObject from the string containing the full JSON
+        if(isETF)
+            return jsonObject.getString("companyName"); // "companyName" represents the full name in the response JSON for IEX Cloud APU
+        else
+            return jsonObject.getString("name"); // "name" represents the full name in the response JSON for Finnhub APU
+    }
+
+    // determine if a stock is a single stock or an ETF based on its ticker symbol
+    // get the type of the stock using Yahoo Finance API as other APIs don't have this data
+    public static String getType(String ticker) {
+        try {
+            String apiUrl = "https://query1.finance.yahoo.com/v1/finance/search?q=" + ticker;
+
+            // sends an HTTP request to the Yahoo Finance API and gets a JSON full of stock data
+            URL url = new URL(apiUrl);
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            connection.setRequestMethod("GET");
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String response = "";
+            String line = null;
+
+            do {
+                line = br.readLine();
+                response += line;
+            } while(line != null);
+
+            br.close();
+
+            // make a JSON object from the API response
+            JSONObject jsonObject = new JSONObject(response);
+
+            // extract the "quotes" array from the JSON
+            JSONArray quotes = jsonObject.getJSONArray("quotes");
+            if (quotes.length() > 0) {
+                // extract the first element from the "quotes" array
+                JSONObject firstQuote = quotes.getJSONObject(0);
+                String quoteType = firstQuote.getString("quoteType"); // quoteType contains the type of stock it is
+                if (quoteType.equals("EQUITY")) { // "EQUITY" means its a single stock
+                    return "Single";
+                }
+                else {
+                    return "ETF";
+                }
+            }
+            else {
+                return "Unknown";
+            }
+        }
+        catch (Exception e) {
+            return e.getMessage();
+        }
+    }
+
+    // checks if a stock exists based on its ticker symbol
+    public static boolean stockExists(String ticker) throws Exception {
+        String response = getStockData(ticker);
+        JSONObject jsonObject = new JSONObject(response);
+        double price = jsonObject.getDouble("c");
+        // if the cost of the stock is $0, that means it doesnt exist
+        if(price == 0)
+            return false;
+        else
+            return true;
+    }
+    // get the last time the stock data was updated
+    public static String getLastUpdateTime(String ticker) throws Exception {
+        String response = getStockData(ticker);
+        JSONObject jsonObject = new JSONObject(response);
+        long timestamp = jsonObject.getLong("t"); // "t" represents the timestamp of the last update in the response JSON
+        return convertTimestampToString(timestamp); // convert the timestamp to a readable date and time format
+    }
+
+    // convert timestamp to a readable date and time format
+    // it will take in a unix timestamp (time elapsed since 00:00:00 UTC on January 1 1970) and provide a readable date
+    private static String convertTimestampToString(long timestamp) {
+        long timestampMillis = timestamp * 1000L;
+
+        // create a Date object from the timestamp
+        Date date = new Date(timestampMillis);
+
+        // set the format for the date and time
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM d, yyyy, hh:mm:ss a");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("America/New_York"));
+
+        // implement the format for the date and time
+        String formattedDateTime = dateFormat.format(date);
+        return formattedDateTime;
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+  Jeremy Chong, Krish Patel, and Mika Vohl
+  06/14/2023
+  JsonTools
+  This files provides us with tools to read a JSON file and add a JSON array of stocks to an ArrayList of portfolio
+*/
+
+package backend;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class JsonTools {
+    // this function will retrieve a JSON from inputted file in the project
+    public static String readJson(String file) {
+        String jsonString = "";
+
+        // read each line, adding it to jsonString
+        try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line = null;
+            do {
+                line = br.readLine();
+                jsonString += line;
+            } while(line != null);
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        // return the string with the full JSON file
+        return jsonString;
+    }
+
+    // this method will create a portfolio from a JSONArray
+    // the user's portfolio is stored in a JSON array, this is not usable so we add everything in the JSON to an ArrayList full of the user's stocks
+    public static ArrayList<Stock> createPortfolio(JSONArray jsonPortfolio) {
+        // create an empty ArrayList to store the stocks
+        ArrayList<Stock> portfolio = new ArrayList<>();
+        // iterate over each element in the jsonPortfolio array
+        for (int i = 0; i < jsonPortfolio.length(); i++) {
+            // get current stock info
+            JSONObject portfolioObject = jsonPortfolio.getJSONObject(i);
+            String ticker = portfolioObject.keys().next();
+            int quantity = portfolioObject.getInt(ticker);
+
+            // if the stock is an ETF, add an ETF to the portfolio
+            if(GetStockInfo.getType(ticker).equals("ETF")) {
+                Stock stock = new ETF(ticker, quantity, "ETF");
+                portfolio.add(stock);
+            }
+            // if the stock is a Single Stock, add a Single Stock to the portfolio
+            else {
+                Stock stock = new SingleStock(ticker, quantity, "SINGLE");
+                portfolio.add(stock);
+            }
+        }
+        // return the stock portfolio
+        return portfolio;
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+  Jeremy Chong, Krish Patel, and Mika Vohl
+  06/14/2023
+  SingleStock
+  This file is what is used to make an SingleStock object in our project
+*/
+
+package backend;
+
+import java.net.*;
+import java.io.*;
+import org.json.JSONObject;
+import org.json.JSONArray;
+
+// SingleStock inherits abstract class Stock
+public class SingleStock extends Stock {
+    double EPS = 0;
+
+    // SingleStock constructors
+    public SingleStock(String ticker, int shares, String type) {
+        this.ticker = ticker;
+        this.shares = shares;
+        this.type = type;
+        this.EPS = retrieveEPS(this.ticker);
+    }
+
+    public SingleStock(String ticker, int shares) {
+        this.ticker = ticker;
+        this.shares = shares;
+        this.type = "UNKNOWN";
+        this.EPS = retrieveEPS(this.ticker);
+    }
+
+    // access method to get the earnings per share of a single stock
+    public double getEPS() {
+        return this.EPS;
+    }
+
+    // method to retrieve the EPS from Yahoo Finance API
+    private double retrieveEPS(String ticker) {
+        try {
+            // sends an HTTP request to the Yahoo Finance API
+            String apiUrl = "https://query1.finance.yahoo.com/v10/finance/quoteSummary/" + ticker + "?modules=defaultKeyStatistics";
+
+            URL url = new URL(apiUrl);
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            connection.setRequestMethod("GET");
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String response = "";
+            String line = null;
+
+            do {
+                line = br.readLine();
+                response += line;
+            } while(line != null);
+            br.close();
+
+            // response holds the entire JSON file in string format now
+
+            // make a JSON object from the API response
+            JSONObject jsonObject = new JSONObject(response);
+
+            JSONArray resultArray = jsonObject.getJSONObject("quoteSummary").getJSONArray("result");
+            if (resultArray.length() > 0) { // if the array is not empty
+                // goes through and finding the trailingEPS property of the stock
+                JSONObject resultObject = resultArray.getJSONObject(0);
+                JSONObject keyStatistics = resultObject.getJSONObject("defaultKeyStatistics");
+                if (keyStatistics.has("trailingEps")) {
+                    JSONObject trailingEpsObject = keyStatistics.getJSONObject("trailingEps");
+                    if (trailingEpsObject.has("raw")) {
+                        return trailingEpsObject.getDouble("raw");
+                    }
+                }
+            }
+
+            return 0;
+
+        }
+        catch (Exception e) {
+            return 0;
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+  Jeremy Chong, Krish Patel, and Mika Vohl
+  06/14/2023
+  Stock
+  This file is what is used to make a Stock abstract object in our project
+*/
+
+package backend;
+import java.io.*;
+
+
+// abstract class of Stock
+// this means we can't create an instance of Stock
+// SingleStock and ETF both inherit from this
+public abstract class Stock {
+    public String ticker = null;
+    public int shares = 0;
+    public String type = null;
+
+    // access methods to see the state of the properties of the stock
+    public String getTicker() {
+        return this.ticker;
+    }
+    public int getShares() {
+        return this.shares;
+    }
+    public String getType() {
+        return this.type;
+    }
+    public void addShares(int shares) {
+        this.shares += shares;
+    }
+    public void subtractShares(int shares) {
+        this.shares -= shares;
+    }
+
+    // retrieves the price of the stock using the ticker symbol, uses method from GetStockInfo to do this
+    public double getPrice() {
+        try {
+            return GetStockInfo.getPrice(this.ticker);
+        }
+        catch(Exception e) {
+            return 0;
+        }
+    }
+
+    // calculates the total value of the stock by multiplying the price with the number of shares.
+    public double getTotalValue() {
+        double total = -1;
+        try {
+            total = getPrice() * getShares();
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+        return total;
+    }
+
+    // gets the full name of the stock using the ticker symbol, uses method from GetStockInfo to do this
+    public String getFullName() {
+        try {
+            return GetStockInfo.getFullName(this.ticker);
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+  Jeremy Chong, Krish Patel, and Mika Vohl
+  06/14/2023
+  User
+  This file is what is used to make an User object in our project
+*/
+
+package backend;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
+
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+
+public class User {
+    private String username = null;
+    private String firstName = null;
+    private String lastName = null;
+    private double balance = 0;
+    private ArrayList<Stock> portfolio = null;
+
+    // creates a user object using the following parameters
+    public User(String uName, String fName, String lName, double balance, ArrayList<Stock> stocks) {
+        this.username = uName;
+        this.firstName = fName;
+        this.lastName = lName;
+        this.balance = balance;
+        this.portfolio = stocks;
+    }
+
+    // access methods for all the parameters
+    public String getUsername() {
+        return this.username;
+    }
+    public String getFirstName() {
+        return this.firstName;
+    }
+    public String getLastName() {
+        return this.lastName;
+    }
+    public double getBalance() {
+        return this.balance;
+    }
+    public ArrayList<Stock> getPortfolio() {
+        return this.portfolio;
+    }
+
+
+    // this will be called when the user buys a stock, it takes in the number of shares and ticker symbol
+    // false means buyStock is unsuccessful, true means it is successful
+    public boolean buyStock(int shares, String ticker) {
+        try {
+            if (!GetStockInfo.stockExists(ticker)) { // if the stock doesn't exist, it returns false
+                return false;
+            }
+
+            double balanceChecker = 0.0;
+
+            // ETFs will have an added 0.5% tax when buying it
+            if (GetStockInfo.getType(ticker).equals("ETF")) {
+                balanceChecker = GetStockInfo.getPrice(ticker) * shares * (1+((double)ETF.feePercent/100));
+            }
+            else {
+                balanceChecker = GetStockInfo.getPrice(ticker) * shares;
+            }
+
+            // checking to see if the user has enough money to buy the stock
+            if (this.balance >= balanceChecker) {
+
+                // updates user's balance
+                this.balance -= balanceChecker;
+
+                // updates user's portfolio
+                boolean stockInPortfolio = false;
+
+                // checks if the stock is in the portfolio
+                // if it is, it increases the shares in the portfolio
+                for (int i = 0; i < this.portfolio.size(); i++) {
+                    Stock currStock = this.portfolio.get(i);
+                    if (currStock.getTicker().equals(ticker)) {
+                        stockInPortfolio = true;
+                        currStock.addShares(shares);
+                        break;
+                    }
+                }
+                // if the stock isn't in the portfolio
+                if (!stockInPortfolio) {
+                    Stock stock = null;
+                    if (GetStockInfo.getType(ticker).equals("ETF")) {
+                        stock = new ETF(ticker, shares, "ETF");
+                    }
+                    else if (GetStockInfo.getType(ticker).equals("Single")){
+                        stock = new SingleStock(ticker, shares, "SINGLE");
+                    }
+                    else { // if the stock is not an ETF or Single
+                        stock = new SingleStock(ticker, shares);
+                    }
+                    this.portfolio.add(stock);
+                }
+                // updates the JSON with new balance and portfolio
+                updateBalanceJSON();
+                addStockJSON(ticker, shares);
+                return true;
+            }
+            return false;
+        }
+        catch(Exception e) {
+            return false;
+        }
+    }
+
+    // this will be called when the user sells a stock, it takes in the number of shares and ticker symbol
+    // false means sellStock is unsuccessful, true means it is successful
+    public boolean sellStock(int shares, String ticker) throws Exception {
+        // sorts the portfolio
+        ArrayList<Stock> sortedTickerPortfolio = sortPortfolio(this.portfolio, 0, this.portfolio.size()-1);
+        // uses binary search to see if the user has the stock in their portfolio
+        int indexOfStock = binarySearch(sortedTickerPortfolio, ticker);
+        // -1 means that the stock is not the portfolio
+        if(indexOfStock == -1) return false;
+        Stock stockToSell = sortedTickerPortfolio.get(indexOfStock);
+
+        if (indexOfStock != -1) { // if stock is found in the portfolio
+            if (shares > stockToSell.getShares()) {
+                return false; // return false if not enough shares to sell
+            }
+
+            // update user's balance
+            double stockPrice = GetStockInfo.getPrice(ticker);
+            this.balance += stockPrice * shares;
+
+            stockToSell.subtractShares(shares);
+
+            // check if all shares of the stock have been sold
+            if (stockToSell.getShares() == 0) {
+                this.portfolio.remove(stockToSell);
+            }
+
+            // updates the JSON will new balance and portfolio
+            updateBalanceJSON();
+            removeStockJSON(ticker, shares);
+            return true;
+        }
+        return false;
+    }
+
+    // method to add a stock into the JSON
+    private void addStockJSON(String ticker, int shares) {
+        try {
+            // reasons the json and stores it all in a string
+            String jsonContent = JsonTools.readJson("accounts.json");
+            JSONObject jsonObject = new JSONObject(jsonContent);
+
+            // find the user with the given username
+            JSONArray users = jsonObject.getJSONArray("users");
+            for (int i = 0; i < users.length(); i++) {
+                JSONObject user = users.getJSONObject(i);
+                if (user.getString("username").equals(this.username)) {
+                    // find the stock in the user's stocks array
+                    JSONArray stocks = user.getJSONArray("stocks");
+                    boolean stockFound = false;
+                    for (int j = 0; j < stocks.length(); j++) {
+                        JSONObject stock = stocks.getJSONObject(j);
+                        if (stock.has(ticker)) {
+                            // update the stock count
+                            int currentCount = stock.getInt(ticker);
+                            stock.put(ticker.toUpperCase(), currentCount + shares);
+                            stockFound = true;
+                            break;
+                        }
+                    }
+                    if (!stockFound) {
+                        // add a new stock entry
+                        JSONObject stock = new JSONObject();
+                        stock.put(ticker, shares);
+                        stocks.put(stock);
+                    }
+                    break;
+                }
+            }
+
+            // write the updated JSON back to the file
+            BufferedWriter bw = new BufferedWriter(new FileWriter("accounts.json"));
+            bw.write(jsonObject.toString(4));
+            bw.close();
+        }
+
+        catch (JSONException | IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // method to remove a stock into the JSON
+    private void removeStockJSON(String ticker, int shares) {
+        try {
+            String jsonContent = JsonTools.readJson("accounts.json");
+            JSONObject jsonObject = new JSONObject(jsonContent);
+
+            // find the user with the given username
+            JSONArray users = jsonObject.getJSONArray("users");
+            for(int i = 0; i < users.length(); i++) {
+                JSONObject user = users.getJSONObject(i);
+                if(user.getString("username").equals(this.username)) {
+                    // find the stock in the user's stocks array
+                    JSONArray stocks = user.getJSONArray("stocks");
+                    for(int j = 0; j < stocks.length(); j++) {
+                        JSONObject stock = stocks.getJSONObject(j);
+                        if(stock.has(ticker)) {
+                            int currentCount = stock.getInt(ticker);
+                            if(currentCount == shares){
+                                // if all shares are sold, remove the stock from JSON
+                                stocks.remove(j);
+                            }
+                            else {
+                                // reduce the number of shares
+                                stock.put(ticker, currentCount - shares);
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+
+            // write the updated JSON back to the file
+            BufferedWriter bw = new BufferedWriter(new FileWriter("accounts.json"));
+            bw.write(jsonObject.toString(4));
+            bw.close();
+        }
+        catch (JSONException e) {
+            System.out.println(e.getMessage());
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void updateBalanceJSON() throws IOException {
+        String jsonString = JsonTools.readJson("accounts.json");
+        JSONObject jsonObject = new JSONObject(jsonString);
+
+        JSONArray users = jsonObject.getJSONArray("users");
+        for (int i = 0; i < users.length(); i++) {
+            JSONObject user = users.getJSONObject(i);
+            if (user.getString("username").equals(this.username)) {
+                // Update the balance for the user
+                user.put("balance", this.balance);
+                break;
+            }
+        }
+        BufferedWriter bw = new BufferedWriter(new FileWriter("accounts.json"));
+        bw.write(jsonObject.toString());
+        bw.close();
+    }
+
+    // this quicksort method will sort the portfolio in alphabetical order based on their ticker
+    // we have this so we can binary search to find whether the stock is in the portfolio and if it is, which index is it at
+    private static ArrayList<Stock> sortPortfolio(ArrayList<Stock> unsorted, int left, int right) {
+        if (left >= right)
+            return unsorted;
+
+        final int FIRST_LEFT = left;
+        final int FIRST_RIGHT = right;
+        boolean leftSide = true;
+        Stock temp = null;
+        int pivot = 0;
+
+        while (left != right) {
+            if(leftSide) {
+                // LEFT PIVOT
+                pivot = left;
+                if(unsorted.get(pivot).getTicker().compareTo(unsorted.get(right).getTicker()) > 0) {
+                    temp = unsorted.get(right);
+                    unsorted.set(right, unsorted.get(pivot));
+                    unsorted.set(pivot, temp);
+                    leftSide = false;
+                }
+                else {
+                    right--;
+                }
+            }
+
+            else {
+                // RIGHT PIVOT
+                pivot = right;
+                if(unsorted.get(pivot).getTicker().compareTo(unsorted.get(left).getTicker()) < 0) {
+                    temp = unsorted.get(left);
+                    unsorted.set(left, unsorted.get(pivot));
+                    unsorted.set(pivot, temp);
+                    leftSide = true;
+                }
+                else
+                    left++;
+            }
+        }
+        sortPortfolio(unsorted, FIRST_LEFT, pivot - 1); // left side of array
+        sortPortfolio(unsorted, pivot + 1, FIRST_RIGHT); // right side of array
+        return unsorted;
+    }
+
+    // this binary search will go through the portfolio and find the Stock with the corresponding ticker
+    // it will return the index of the stock, if it returns -1, that means that the stock is not in the portfolio
+    public static int binarySearch(ArrayList<Stock> portfolio, String ticker) {
+        int left = 0;
+        int right = portfolio.size() - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            Stock midStock = portfolio.get(mid);
+            int comparison = midStock.getTicker().compareTo(ticker);
+
+            if (comparison == 0) {
+                // ticker found
+                return portfolio.indexOf(midStock);
+            }
+            else if (comparison < 0) {
+                // ticker may be in the right half
+                left = mid + 1;
+            }
+            else {
+                // ticker may be in the left half
+                right = mid - 1;
+            }
+        }
+        // ticker not found
+        return -1;
+    }
+
+    // this method will return the number of shares that the User has of a certain stock, take in the ticker
+    public int getNumberOfShares(String ticker) {
+        ArrayList<Stock> sortedTickerPortfolio = sortPortfolio(this.portfolio, 0, this.portfolio.size()-1);
+        int indexOfStock = binarySearch(sortedTickerPortfolio, ticker);
+        if(indexOfStock == -1) {
+            return -1;
+        }
+        else {
+            Stock stock = sortedTickerPortfolio.get(indexOfStock);
+            return stock.getShares();
+        }
+    }
+
+    // this method will return the total portfolio value that the user has
+    public double getTotalPortfolioValue() {
+        return Math.round(calculateTotalPortfolioValue(this.portfolio, 0, 0) * 100.0) / 100.0;
+    }
+
+    // this method is used to perform the calculations to get the total portfolio value
+    private double calculateTotalPortfolioValue(ArrayList<Stock> portfolio, int index, double portfolioValue) {
+        if (index >= portfolio.size()) {
+            return portfolioValue;
+        }
+        Stock currStock = portfolio.get(index);
+        double currStockPrice = currStock.getPrice() * currStock.getShares();
+        portfolioValue += currStockPrice;
+
+        // recursive function to go through each stock in the portfolio
+        return calculateTotalPortfolioValue(portfolio, index+1, portfolioValue);
+    }
+
+    // this method how much money the user is up or down all time, can be compared to original $10000 that user gets in the beginning
+    public double getAllTimeUpOrDownMoney() {
+        double portfolioValue = getTotalPortfolioValue();
+        double totalAccountValue = portfolioValue + this.balance;
+
+        return Math.round((totalAccountValue - 10000)*100.0) / 100.0;
+    }
+
+    // this method how much percent the user is up or down all time, can be compared to original $10000 that user gets in the beginning
+    public double getAllTimeUpOrDownPercent() {
+        double value = 100 * (getAllTimeUpOrDownMoney() / 10000);
+        return Math.round(value * 100.0) / 100.0;
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+  Jeremy Chong, Krish Patel, and Mika Vohl
+  14/09/2023
+  Login page
+  This file allows the user log into the stock trading simulator after registering through the PHP website.
+*/
+
+package frontend;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import backend.*;
+import org.json.*;
+
+public class Login extends JFrame implements ActionListener { // This class inherits from JFrame and the interface ActionListener
+  // In the following lines, different swing component variables are initialized to be accessed anywhere within the class, but not outside of it
+  private JPanel panel = null;
+  private JButton loginButton = null;
+  private JLabel title = null, userLabel = null, passwordLabel = null, loginMsg = null;
+  private JTextField usernameField = null;
+  private JPasswordField passwordField = null;
+  private MenuPage mainMenu = null;
+  // In the following lines, we are initializing variables that will hold useful user information
+  public JSONObject foundUser = null;
+  public User currentUser = null;
+  String enteredUsername = null, enteredPassword = null;
+
+  // Login() is a constructor that initializes the state of the page when it is instantiated
+  public Login() {
+
+    setTitle("Login page");
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Stops application when the "x" button is pressed
+    // The code below instantiates the formatting of the entire window
+    setResizable(false);
+    setSize(1000, 650);
+    setLocationRelativeTo(null);
+
+    panel = new JPanel(); // Adds a new Panel object that will contain different swing components
+    panel.setLayout(new GridBagLayout()); // Sets the layout that components in the panel will follow
+
+    // The following code creates positioning anchors for the layout of components
+    GridBagConstraints gbc = new GridBagConstraints(); //Java swing layout
+    gbc.anchor = GridBagConstraints.CENTER;
+    gbc.insets = new Insets(10, 10, 10, 10); //Adds padding of 10px
+
+    // The following creates font presets
+    Font textFont = new Font("Arial", Font.PLAIN, 24);
+    Font titleFont = new Font("Arial", Font.BOLD, 30);
+
+    // The following code handles menu title creation and styling
+    title = new JLabel("Start your stock trading journey!");
+    title.setForeground(Color.RED);
+    gbc.gridx = 0; //x-position
+    gbc.gridy = 0; //y-position
+    gbc.gridwidth = 3; //setting the width of label
+    title.setFont(titleFont);
+    panel.add(title, gbc);
+
+    // The following code handles username label creation and styling
+    userLabel = new JLabel("Username:");
+    userLabel.setForeground(Color.WHITE);
+    gbc.gridx = 0;
+    gbc.gridy = 1;
+    gbc.gridwidth = 1;
+    userLabel.setFont(textFont);
+    panel.add(userLabel, gbc);
+
+    // The following code handles username input field creation and styling
+    usernameField = new JTextField(20);
+    gbc.gridx = 1;
+    gbc.gridy = 1;
+    gbc.gridwidth = 2;
+    usernameField.setColumns(10);
+    usernameField.setFont(textFont);
+    panel.add(usernameField, gbc);
+
+    // The following code handles password label creation and styling
+    passwordLabel = new JLabel("Password:");
+    passwordLabel.setForeground(Color.WHITE);
+    gbc.gridx = 0;
+    gbc.gridy = 2;
+    gbc.gridwidth = 1;
+    passwordLabel.setFont(textFont);
+    panel.add(passwordLabel, gbc);
+
+    // The following code handles password input field creation and styling
+    passwordField = new JPasswordField(20);
+    gbc.gridx = 1;
+    gbc.gridy = 2;
+    gbc.gridwidth = 2;
+    passwordField.setColumns(10);
+    passwordField.setFont(textFont);
+    panel.add(passwordField, gbc);
+
+    // The following code handles login button creation and styling
+    loginButton = new JButton("Login");
+    loginButton.setFont(textFont);
+    loginButton.addActionListener(this); // listens for activity (pressing the button) and reports it to a function below
+    gbc.gridx = 1;
+    gbc.gridy = 3;
+    gbc.gridwidth = 2;
+    panel.add(loginButton, gbc);
+
+    // The following code handles login status message creation and styling
+    loginMsg = new JLabel("");
+    loginMsg.setFont(textFont);
+    loginMsg.setForeground(Color.RED);
+    gbc.gridx = 0;
+    gbc.gridy = 4;
+    gbc.gridwidth = 3;
+    panel.add(loginMsg, gbc);
+
+    //styling the panel and adding it to the JFrame
+    panel.setBackground(Main.BACKGROUND_COLOR);
+    add(panel);
+  }
+
+  public static String decrypt(String word, int key) { // This method decrypts passwords encrypted with the encrypt method
+    String decrypted = "";
+    int ascii = 0;
+    char letter = ' ';
+    for (int i = 0; i < word.length(); i++) {
+      ascii = word.charAt(i) - key;
+      letter = (char) ascii;
+      decrypted += letter;
+    }
+    return decrypted; // returns the decrypted password
+  }
+
+  //Overriding the actionPreformed method from the ActionListener interface
+  public void actionPerformed(ActionEvent e) { // This method processes actions/input made to an action listener (ex. Button)
+    String filePath = Server.fileName; // Saves the file path to the json file
+    String jsonString = null;
+    try {
+      jsonString = new String(Files.readAllBytes(Paths.get(filePath))); // Reads the json file into a string
+    }catch(IOException err){
+      err.printStackTrace(); // If an error occurs, it is printed
+    }
+    JSONObject accountsObj = new JSONObject(jsonString); // Creates a JSONObject that represents a json file in the form of an object
+    JSONArray users = accountsObj.getJSONArray("users"); // Creates an array of user's JSON information from the JSONObject
+
+    if (e.getSource() == loginButton) { // If the login button is pressed
+      enteredUsername = usernameField.getText();
+      enteredPassword = new String(passwordField.getPassword());
+      usernameField.setText("");
+      passwordField.setText("");
+      // find the user with the username in the JSON
+      foundUser = null; // store the found user's data in JSONObject
+
+      for(int i = 0; i < users.length(); i++) { // loops through each of the users, looking for the username
+        JSONObject user = users.getJSONObject(i);
+        String currUsername = user.getString("username");
+        //If the username matches
+        if(currUsername.equals(enteredUsername)) {
+          //Checking if the password is correct
+          String currPassword = decrypt(user.getString("password"), 2);
+          foundUser = user;
+          if (currPassword.equals(enteredPassword)) {
+            setVisible(false);
+            JSONArray extractedPortfolio = user.getJSONArray("stocks");
+            currentUser = new User(user.getString("username"), user.getString("first"), user.getString("last"), user.getDouble("balance"), JsonTools.createPortfolio(extractedPortfolio)); // Creates a new User object
+            mainMenu = new MenuPage(); // Creates a new menu page object
+            mainMenu.setVisible(true); // Ensures the menu page is visible
+          }
+          else {
+            loginMsg.setText("WRONG PASSWORD, TRY AGAIN"); // If the password is incorrect, tell the user
+          }
+          break;
+        }
+      }
+      //If the user was not found
+      if (foundUser == null)
+        loginMsg.setText("USER NOT FOUND, REGISTER ON THE PHP WEBSITE"); // If the username is not registered, tell the user
+    }
+  }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+  Jeremy Chong, Krish Patel, and Mika Vohl
+  14/09/2023
+  Main Source File
+  This file holds and initializes the start of the program.
+*/
+
+package frontend;
+
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
+public class Main {
+  public static Login loginPage = null; // Creates a reference variable that will point to a login page object
+  // Declares constants for often used background colors
+  public final static Color BACKGROUND_COLOR = new Color(38, 38, 38);
+  public final static Color BACKGROUND_COLOR2 = new Color(91, 123, 122);
+
+  public static void main(String[] args) {
+    Server.getJSONFromPHP(); // Retrieves current JSON information from the PHP website
+    loginPage = new Login(); // Creates a new Login object
+    loginPage.setVisible(true); // Ensures the login page is visible
+  }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+  Jeremy Chong, Krish Patel, and Mika Vohl
+  06/14/2023
+  Menu page
+  This file displays the menu for the user to navigate through each page.
+*/
+
+package frontend;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MenuPage extends JFrame implements ActionListener { // This class inherits from JFrame and the interface ActionListener
+    // The following code initializes private instance variables for different Java Swing components
+    private JPanel panel = null;
+    private JButton tradeButton =  null, logoutButton = null, viewPortfolioButton = null;
+    private JLabel title = null;
+    // The following code initializes variables for the different pages
+    private Portfolio userPortfolio = null;
+    private Trade tradeMenu = null;
+
+    // Contructor that will initialize the state of the menu page
+    public MenuPage() {
+        // Set up the menu page window
+        setTitle("Menu");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setSize(1000, 650);
+        setLocationRelativeTo(null);
+
+        // Set up the panel and its layout
+        panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        // Set up fonts for buttons and title
+        Font buttonFont = new Font("Arial", Font.PLAIN, 24);
+        Font titleFont = new Font("Arial", Font.BOLD, 40);
+
+        // Menu title creation and styling
+        title = new JLabel("Stock Trading Simulator");
+        title.setForeground(Color.RED);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        title.setFont(titleFont);
+        panel.add(title, gbc);
+
+        // View portfolio button creation and styling
+        viewPortfolioButton = new JButton("View Portfolio");
+        viewPortfolioButton.setFont(buttonFont);
+        viewPortfolioButton.addActionListener(this);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.ipadx = 50; // Increases the button width
+        gbc.ipady = 20; // Increases the button height
+        viewPortfolioButton.setPreferredSize(new Dimension(200, 30));
+        panel.add(viewPortfolioButton, gbc);
+
+        // Trade button creation and styling
+        tradeButton = new JButton("Trade");
+        tradeButton.setFont(buttonFont);
+        tradeButton.addActionListener(this);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        tradeButton.setPreferredSize(new Dimension(200, 30));
+        panel.add(tradeButton, gbc);
+
+        // Logout button creation and styling
+        logoutButton = new JButton("Logout");
+        logoutButton.setFont(buttonFont);
+        logoutButton.addActionListener(this);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        logoutButton.setPreferredSize(new Dimension(200, 30));
+        panel.add(logoutButton, gbc);
+
+        // Styling the panel and adding it to the JFrame
+        panel.setBackground(Main.BACKGROUND_COLOR);
+        add(panel);
+    }
+
+    //Overriding the actionPreformed method from the ActionListener interface
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == viewPortfolioButton) {
+            // Disable the button and create a new portfolio if necessary
+            viewPortfolioButton.setVisible(false);
+            viewPortfolioButton.setEnabled(false);
+            if (userPortfolio == null) {
+                userPortfolio = new Portfolio();
+            }
+            // Hide the menu and display the user's portfolio
+            setVisible(false);
+            userPortfolio.setVisible(true);
+            // Re-enable the button
+            viewPortfolioButton.setEnabled(true);
+        } else if (e.getSource() == tradeButton) {
+            // Display the trade menu
+            setVisible(false);
+            // Check if the trade menu is already created, if not, create it
+            if (tradeMenu == null)
+                tradeMenu = new Trade();
+            tradeMenu.setVisible(true);
+        } else if (e.getSource() == logoutButton) {
+            // Hide the menu and display the login page
+            setVisible(false);
+            Main.loginPage.setVisible(true);
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+  Jeremy Chong, Krish Patel, and Mika Vohl
+  06/14/2023
+  Page Interface
+  This file acts as a guideline to creating pages.
+*/
+
+package frontend;
+
+import backend.User;
+
+public interface Page {
+    final User USER = Main.loginPage.currentUser; // Defines a constant that references the current user who is signed in
+    void deletePage(); // Tells child classes that they must create a deletePage() method
+
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+  Jeremy Chong, Krish Patel, and Mika Vohl
+  06/14/2023
+  Portfolio page
+  This file displays the user's stock portfolio, which also shows the user's holdings and other stock information that they own.
+*/
+
+package frontend;
+import backend.*;
+
+import javax.sound.sampled.Port;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
+public class Portfolio extends JFrame implements ActionListener, Page { // This class inherits from JFrame and the interfaces ActionListener & Page
+  // The following code initializes private instance variables for different Java Swing components
+  private JPanel panel = null, stockContainer = null;
+  private JButton returnButton = null;
+  private JScrollPane scrollPane = null;
+  private JLabel updatedMsg = null, overallPercent = null, overallMoney = null, portfolioValue = null, epsLabel = null, title = null, balanceLabel = null;
+  // The following line initializes a decimal format that will be followed throughout the class
+  public static final DecimalFormat df = new DecimalFormat("0.00");
+  public String oldUpdateTime = null;
+  private double balance = USER.getBalance();
+
+
+  // Contructor that will initialize the state of the portfolio page
+  public Portfolio() {
+    // Set up the portfolio menu window
+    setTitle("Portfolio Menu");
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setResizable(false);
+    setSize(1000, 650);
+    setLocationRelativeTo(null);
+
+    // Set up the panel and scroll pane
+    panel = new JPanel(new GridBagLayout());
+    scrollPane = new JScrollPane(panel);
+    scrollPane.setPreferredSize(new Dimension(800, 600)); // Set preferred size of the scrollable area
+    scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.insets = new Insets(10, 10, 10, 10);
+
+    gbc.gridx = 0;
+    gbc.gridy = GridBagConstraints.RELATIVE;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.weightx = 1.0; // Occupy horizontal space
+
+    // Set up fonts for labels and text
+    Font titleFont = new Font("Arial", Font.BOLD, 27);
+    Font subtitleFont = new Font("Arial", Font.BOLD, 22);
+    Font subsubtitleFont = new Font("Arial", Font.BOLD, 20);
+    Font boldText = new Font("Arial", Font.BOLD, 18);
+    Font textFont = new Font("Arial", Font.PLAIN, 17);
+
+    // Create the return button and add it to the panel
+    returnButton = new JButton("Return to menu");
+    returnButton.addActionListener(this);
+    returnButton.setFont(textFont);
+    panel.add(returnButton, gbc);
+
+    // Create and style the portfolio title
+    title = new JLabel(USER.getFirstName() + " " + USER.getLastName() + "'s Portfolio");
+    title.setFont(titleFont);
+    title.setForeground(Color.WHITE);
+    panel.add(title, gbc);
+
+    // Create and style the balance label
+    balanceLabel = new JLabel("Current Balance: $" + df.format(balance));
+    balanceLabel.setFont(subtitleFont);
+    balanceLabel.setForeground(Color.WHITE);
+    panel.add(balanceLabel, gbc);
+
+    try {
+      // Show message that displays the last time the stocks were updated with the API
+      updatedMsg = new JLabel("Last updated: " + GetStockInfo.getLastUpdateTime("AAPL"));
+      updatedMsg.setFont(subsubtitleFont);
+      updatedMsg.setForeground(Color.WHITE);
+      panel.add(updatedMsg, gbc);
+      oldUpdateTime = updatedMsg.getText();
+    } catch (Exception e) {
+      updatedMsg = new JLabel(oldUpdateTime);
+    }
+
+    // Create and style labels for overall portfolio performance
+    overallMoney = new JLabel("All Time Profit: $" + USER.getAllTimeUpOrDownMoney());
+    // Set color based on profit/loss
+    if (USER.getAllTimeUpOrDownMoney() < 0)
+      overallMoney.setForeground(Color.RED);
+    else if (USER.getAllTimeUpOrDownMoney() > 0)
+      overallMoney.setForeground(Color.GREEN);
+    else
+      overallMoney.setForeground(Color.WHITE);
+    overallMoney.setFont(subsubtitleFont);
+    panel.add(overallMoney, gbc);
+
+    overallPercent = new JLabel("All Time % Increase: " + USER.getAllTimeUpOrDownPercent() + "%");
+    // Set color based on increase/decrease
+    if (USER.getAllTimeUpOrDownPercent() < 0)
+      overallPercent.setForeground(Color.RED);
+    else if (USER.getAllTimeUpOrDownPercent() > 0)
+      overallPercent.setForeground(Color.GREEN);
+    else
+      overallPercent.setForeground(Color.WHITE);
+    overallPercent.setFont(subsubtitleFont);
+    panel.add(overallPercent, gbc);
+
+    portfolioValue = new JLabel("Portfolio Value: $" + USER.getTotalPortfolioValue());
+    // Set color based on value
+    if (USER.getTotalPortfolioValue() < 0)
+      portfolioValue.setForeground(Color.RED);
+    else
+      portfolioValue.setForeground(Color.WHITE);
+    portfolioValue.setFont(subsubtitleFont);
+    panel.add(portfolioValue, gbc);
+
+    ArrayList<Stock> sortedPortfolio = quickSortPortfolio(USER.getPortfolio(), 0, USER.getPortfolio().size()-1);
+
+    // Create sub panels for each stock in the portfolio
+    for (int i = 0; i < USER.getPortfolio().size(); i++) {
+      Stock currentStock = USER.getPortfolio().get(i);
+      stockContainer = new JPanel(new GridBagLayout());
+      GridBagConstraints miniGBC = new GridBagConstraints();
+      miniGBC.insets = new Insets(10, 10, 10, 10);
+      miniGBC.gridx = 0;
+      miniGBC.gridy = 0;
+      miniGBC.fill = GridBagConstraints.HORIZONTAL;
+      miniGBC.weightx = 1.0; // Occupy horizontal space
+
+      // Create and style labels for stock information
+      JLabel stockName = new JLabel(currentStock.getFullName());
+      stockName.setFont(boldText);
+      stockName.setForeground(Color.WHITE);
+
+      JLabel stockTicker = new JLabel(currentStock.getTicker());
+      stockTicker.setFont(boldText);
+      stockTicker.setForeground(Color.WHITE);
+
+      JLabel stockType = new JLabel("Type: " + currentStock.getType());
+      stockType.setFont(boldText);
+      stockType.setForeground(Color.WHITE);
+
+      double sharePrice = currentStock.getPrice();
+      JLabel stockValue = new JLabel("Price Per Share: $" + sharePrice);
+      stockValue.setFont(textFont);
+      stockValue.setForeground(Color.WHITE);
+
+      JLabel totalLabel = new JLabel("Total Value: $" + df.format(sharePrice * currentStock.getShares()));
+      totalLabel.setFont(textFont);
+      totalLabel.setForeground(Color.WHITE);
+
+      JLabel numShares = new JLabel(currentStock.getShares() + " shares");
+      numShares.setFont(textFont);
+      numShares.setForeground(Color.WHITE);
+
+      stockContainer.add(stockName, miniGBC);
+      miniGBC.gridy = 1;
+      stockContainer.add(stockTicker, miniGBC);
+      miniGBC.gridy = 2;
+      stockContainer.add(stockType, miniGBC);
+      miniGBC.anchor = GridBagConstraints.EAST;
+      miniGBC.gridx = 1;
+      miniGBC.gridy = 0;
+      stockContainer.add(stockValue, miniGBC);
+      miniGBC.gridx = 1;
+      miniGBC.gridy = 1;
+      stockContainer.add(numShares, miniGBC);
+      miniGBC.gridx = 1;
+      miniGBC.gridy = 2;
+      stockContainer.add(totalLabel, miniGBC);
+
+      if (currentStock.getType() == "SINGLE") {
+        epsLabel = new JLabel("Earnings per share: $" + Double.toString(((SingleStock)currentStock).getEPS()));
+        epsLabel.setForeground(Color.WHITE);
+        epsLabel.setFont(textFont);
+        miniGBC.gridx = 1;
+        miniGBC.gridy = 4;
+        stockContainer.add(epsLabel, miniGBC);
+      }
+
+      stockContainer.setBackground(Main.BACKGROUND_COLOR2);
+      stockContainer.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10))); // Set margin of 10 pixels
+      panel.add(stockContainer, gbc);
+    }
+
+    panel.setBackground(Main.BACKGROUND_COLOR);
+    add(scrollPane);
+  }
+
+  @Override
+  public void deletePage() {
+    // Hide the portfolio menu and dispose the frame
+    panel.setVisible(false);
+    dispose();
+  }
+
+  @Override
+  //Overriding the actionPreformed method from the ActionListener interface
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == returnButton) {
+      // Return to the menu page and delete the portfolio menu
+      new MenuPage().setVisible(true);
+      deletePage();
+    }
+  }
+
+  public static ArrayList<Stock> quickSortPortfolio(ArrayList<Stock> unsorted, int left, int right) {
+    if (left >= right)
+      return unsorted;
+
+    final int FIRST_LEFT = left;
+    final int FIRST_RIGHT = right;
+    boolean leftSide = true;
+    Stock temp = null;
+    int pivot = 0;
+
+    while (left != right) {
+      if (leftSide) {
+        // LEFT PIVOT
+        pivot = left;
+        if (unsorted.get(pivot).getTotalValue() < unsorted.get(right).getTotalValue()) {
+          temp = unsorted.get(right);
+          unsorted.set(right, unsorted.get(pivot));
+          unsorted.set(pivot, temp);
+          leftSide = false;
+        } else {
+          right--;
+        }
+      } else {
+        // RIGHT PIVOT
+        pivot = right;
+        if (unsorted.get(pivot).getTotalValue() > unsorted.get(left).getTotalValue()) {
+          temp = unsorted.get(left);
+          unsorted.set(left, unsorted.get(pivot));
+          unsorted.set(pivot, temp);
+          leftSide = true;
+        } else
+          left++;
+      }
+    }
+
+    // Recursively sort the left and right side of the array
+    quickSortPortfolio(unsorted, FIRST_LEFT, pivot - 1); // left side of array
+    quickSortPortfolio(unsorted, pivot + 1, FIRST_RIGHT); // right side of array
+
+    return unsorted;
+  }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+  Jeremy Chong, Krish Patel, and Mika Vohl
+  06/14/2023
+  Server code
+  This code gets the JSON file from the PHP website through HTTP requests.
+*/
+
+package frontend;
+import java.io.*;
+import java.net.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
+
+import backend.Stock;
+import org.json.*;
+
+class Server {
+  public static String jsonContent = null;
+  public static String fileName = "accounts.json";
+
+
+  public static void getJSONFromPHP() {
+    try {
+      String websiteURL = "https://stocksummative.mikavohl.repl.co/data.php"; //URL to JSON file from PHP
+
+      URL url = new URL(websiteURL);
+      //Sending an HTTP request
+      HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+      connection.setRequestMethod("GET");
+
+      // Check the response status code
+      int responseCode = connection.getResponseCode();
+      if (responseCode == HttpURLConnection.HTTP_OK) {
+        // Read the response body as a JSON string
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        StringBuilder response = new StringBuilder();
+
+        //Read the JSON file from the connection established
+        String line = null;
+        do {
+          line = reader.readLine();
+
+          if (line != null)
+            response.append(line);
+        } while(line != null);
+        reader.close();
+
+        //Process the JSON data as needed
+        jsonContent = response.toString();
+        updateAccounts(jsonContent);
+
+      }
+
+      // Close the connection
+      connection.disconnect();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  private static void updateAccounts(String usersJson) {
+
+    try {
+      File accountsFile = new File(fileName);
+
+      if (!accountsFile.exists()) {
+        accountsFile.createNewFile();
+        JSONObject json = new JSONObject();
+        json.put("users", new JSONArray()); // Create an empty array for "users"
+
+        try (FileWriter fileWriter = new FileWriter(fileName)) {
+          fileWriter.write(json.toString());
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      }
+
+      // Read the existing accounts.json file
+      String accountsJson = new String(Files.readAllBytes(Paths.get(fileName)));
+
+      // Parse the accountsJson string into a JSONObject
+      JSONObject accountsObject = new JSONObject(accountsJson);
+
+      // Get the "users" array from the accountsObject
+      JSONArray usersArray = accountsObject.getJSONArray("users");
+
+      // Parse the usersJson string into a JSONObject
+      JSONObject usersObject = new JSONObject(usersJson);
+
+      // Get the "users" array from the usersObject
+      JSONArray newUsersArray = usersObject.getJSONArray("users");
+
+      // Iterate over the new users and check if they exist in the accounts.json file
+      for (int i = 0; i < newUsersArray.length(); i++) {
+        JSONObject newUser = newUsersArray.getJSONObject(i);
+        String newUsername = newUser.getString("username");
+
+        // Check if the new user exists in the accounts.json file
+        boolean userExists = false;
+        for (int j = 0; j < usersArray.length(); j++) {
+          JSONObject existingUser = usersArray.getJSONObject(j);
+          String existingUsername = existingUser.getString("username");
+
+          if (newUsername.equals(existingUsername)) {
+            userExists = true;
+            break;
+          }
+        }
+
+        // If the new user doesn't exist, add it to the usersArray
+        if (!userExists) {
+          // Set the balance and stocks for the new user
+          newUser.put("balance", 10000);
+          newUser.put("stocks", new ArrayList<Stock>());
+          // Add the new user to the usersArray
+          usersArray.put(newUser);
+
+        }
+      }
+
+      // Update the "users" array in the accountsObject
+      accountsObject.put("users", usersArray);
+
+      // Write the updated accounts.json file
+      FileWriter fileWriter = new FileWriter(fileName);
+      fileWriter.write(accountsObject.toString(4));
+      fileWriter.close();
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+  Jeremy Chong, Krish Patel, and Mika Vohl
+  06/14/2023
+  Trade page
+  This file displays the trade menu for the user. This allows them to buy and sell various stocks.
+*/
+
+package frontend;
+import backend.GetStockInfo;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Trade extends JFrame implements ActionListener, Page {
+  //Variables for the main content of the Trade page
+  private JPanel panel = null;
+  private JButton returnButton = null;
+  private JButton tradeButton = null;
+  private JLabel title = null;
+  private JRadioButton buyButton = null;
+  private JRadioButton sellButton = null;
+  private ButtonGroup options = null;
+  private JLabel stockLabel = null;
+  private JTextField stockName = null;
+  private JLabel quantityLabel = null;
+  private JTextField quantityInput = null;
+  private JButton priceButton = null;
+  private JLabel tradeMsg = null;
+  private JLabel balanceLabel = null;
+  //Variables for the detailed side panel for the current stock the user is buying/selling
+  private JPanel detailPanel = null;
+  private JLabel fullStockName = null;
+  private JLabel stockSymbol = null;
+  private JLabel pricePerShare = null;
+  private JLabel typeStock = null;
+  private JLabel currOwnedShares = null;
+  private JLabel sideBarLabel = null;
+  private JLabel feeWarning = null;
+  String tickerSymbol = null;
+
+
+  //Constructor
+  public Trade() {
+    //Frame styling
+    setTitle("Trading Menu");
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setResizable(false);
+    setSize(1000, 650);
+    setLocationRelativeTo(null);
+
+    //Creating main panel
+    panel = new JPanel(new GridBagLayout());
+
+    //Creating the side panel
+    detailPanel = new JPanel(new GridBagLayout());
+
+    //Layout for the main panel
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.insets = new Insets(10, 10, 10, 10);
+
+    gbc.gridx = 0;
+    gbc.gridy = GridBagConstraints.RELATIVE;
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.weightx = 1.0; // Occupy horizontal space
+
+    //Fonts
+    Font titleFont = new Font("Arial", Font.BOLD, 27);
+    Font radFont = new Font("Arial", Font.ITALIC, 25);
+    Font boldText = new Font("Arial", Font.BOLD, 20);
+    Font textFont = new Font("Arial", Font.PLAIN, 20);
+    Font sideBarTitle = new Font("Arial", Font.BOLD, 35);
+    Font sideBarInfo = new Font("Arial", Font.PLAIN, 27);
+
+    //Main panel content
+    returnButton = new JButton("Return to menu");
+    returnButton.setFont(textFont);
+    returnButton.addActionListener(this);
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridwidth = 2;
+    gbc.anchor = GridBagConstraints.NORTH;
+    gbc.weighty = 0.0;
+    panel.add(returnButton, gbc);
+
+    balanceLabel = new JLabel("Balance: $"+Portfolio.df.format(USER.getBalance()));
+    balanceLabel.setFont(titleFont);
+    balanceLabel.setForeground(Color.WHITE);
+    gbc.gridx = 0;
+    gbc.gridy = 1;
+    gbc.gridwidth = 2;
+    panel.add(balanceLabel, gbc);
+
+    //Title creation and styling
+    title = new JLabel("Current Trades");
+    title.setForeground(Color.WHITE);
+    title.setFont(titleFont);
+    gbc.gridx = 0;
+    gbc.gridy = 2;
+    gbc.gridwidth = 1;
+    panel.add(title, gbc);
+
+    //Creating and styling the buy/sell options
+    options = new ButtonGroup();
+
+    buyButton = new JRadioButton("Buy", true);
+    buyButton.setBackground(Main.BACKGROUND_COLOR);
+    buyButton.setForeground(Color.WHITE);
+    buyButton.setFont(radFont);
+    options.add(buyButton);
+    gbc.gridx = 0;
+    gbc.gridy = 3;
+    panel.add(buyButton, gbc);
+
+    sellButton = new JRadioButton("Sell");
+    sellButton.setBackground(Main.BACKGROUND_COLOR);
+    sellButton.setForeground(Color.WHITE);
+    sellButton.setFont(radFont);
+    options.add(sellButton);
+    gbc.gridx = 1;
+    gbc.gridy = 3;
+    panel.add(sellButton, gbc);
+
+    buyButton.addActionListener(this);
+    sellButton.addActionListener(this);
+
+    //Stock input for what the user wants to buy/sell
+    stockLabel = new JLabel("Enter the ticker symbol:");
+    stockLabel.setForeground(Color.WHITE);
+    stockLabel.setFont(boldText);
+    gbc.gridx = 0;
+    gbc.gridy = 4;
+    panel.add(stockLabel, gbc);
+
+    stockName = new JTextField();
+    stockName.setFont(textFont);
+    gbc.gridx = 1;
+    gbc.gridy = 4;
+    panel.add(stockName, gbc);
+
+    //Checking for the price of stock
+    priceButton = new JButton("Select Stock");
+    priceButton.setFont(textFont);
+    priceButton.addActionListener(this);
+    gbc.gridx = 1;
+    gbc.gridy = 5;
+    panel.add(priceButton, gbc);
+
+    //Giving a warning if the user wants to buy an ETF
+    feeWarning = new JLabel("*ETFs have a buy fee of 0.5%*");
+    feeWarning.setVisible(false);
+    feeWarning.setFont(textFont);
+    feeWarning.setForeground(Color.RED);
+    gbc.gridx = 0;
+    gbc.gridy = 5;
+    panel.add(feeWarning, gbc);
+
+    //Input for how much the user wants to buy/sell
+    quantityLabel = new JLabel("Enter quantity:");
+    quantityLabel.setForeground(Color.WHITE);
+    quantityLabel.setFont(boldText);
+    gbc.gridx = 0;
+    gbc.gridy = 6;
+    panel.add(quantityLabel, gbc);
+
+    quantityInput = new JTextField();
+    quantityInput.setFont(textFont);
+    gbc.gridx = 1;
+    gbc.gridy = 6;
+    panel.add(quantityInput, gbc);
+
+    quantityInput.setVisible(false);
+    quantityLabel.setVisible(false);
+
+    //Submitting the trade form
+    tradeButton = new JButton("Buy");
+    tradeButton.setFont(textFont);
+    tradeButton.setPreferredSize(new Dimension(200, 30));
+    tradeButton.setVisible(false);
+    tradeButton.addActionListener(this);
+    gbc.gridx = 1;
+    gbc.gridy = 7;
+    gbc.weightx = 0;
+    panel.add(tradeButton, gbc);
+
+    //Message that tells the user whether or not the trade was successful
+    tradeMsg = new JLabel("");
+    tradeMsg.setFont(boldText);
+    gbc.gridx = 1;
+    gbc.gridy = 8;
+    panel.add(tradeMsg, gbc);
+
+    //Detail sidebar creation and styling
+    GridBagConstraints gbc2 = new GridBagConstraints();
+    gbc2.insets = new Insets(10, 10, 10, 10);
+    gbc2.gridx = 0;
+    gbc2.gridy = GridBagConstraints.RELATIVE;
+    gbc2.fill = GridBagConstraints.HORIZONTAL;
+    gbc2.weightx = 1.0; // Occupy horizontal space
+    //Title for sidebar
+    sideBarLabel = new JLabel("<html>Current stock information:</html>");
+    sideBarLabel.setForeground(Color.WHITE);
+    sideBarLabel.setFont(sideBarTitle);
+
+    //Actual details about the stock
+    fullStockName = new JLabel("<html>No stock selected</html>");
+    fullStockName.setForeground(Color.WHITE);
+    fullStockName.setFont(sideBarInfo);
+
+    stockSymbol = new JLabel();
+    stockSymbol.setForeground(Color.WHITE);
+    stockSymbol.setFont(sideBarInfo);
+
+    pricePerShare = new JLabel();
+    pricePerShare.setForeground(Color.WHITE);
+    pricePerShare.setFont(sideBarInfo);
+
+    currOwnedShares = new JLabel();
+    currOwnedShares.setForeground(Color.WHITE);
+    currOwnedShares.setFont(sideBarInfo);
+
+    typeStock = new JLabel();
+    typeStock.setForeground(Color.WHITE);
+    typeStock.setFont(sideBarInfo);
+
+    //Adding all content to sidebar
+    detailPanel.add(sideBarLabel, gbc2);
+    detailPanel.add(fullStockName, gbc2);
+    detailPanel.add(stockSymbol, gbc2);
+    detailPanel.add(pricePerShare, gbc2);
+    detailPanel.add(currOwnedShares, gbc2);
+    detailPanel.add(typeStock, gbc2);
+
+    //Adding the panels to the JFrame and styling them
+    detailPanel.setBackground(Main.BACKGROUND_COLOR2);
+    detailPanel.setPreferredSize(new Dimension(300, getHeight()));
+
+    panel.setBackground(Main.BACKGROUND_COLOR);
+    panel.setPreferredSize(new Dimension(700, getHeight()));
+
+    setLayout(new BorderLayout());
+    //Adding the panels to the frames
+    add(panel, BorderLayout.EAST);
+    add(detailPanel, BorderLayout.CENTER);
+  }
+
+  @Override
+  public void deletePage() {
+    panel.setVisible(false);
+    detailPanel.setVisible(false);
+    dispose();
+  }
+
+  @Override
+  //Overriding the method from the ActionListener interface
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == buyButton) {
+      tradeButton.setText("Buy");
+    } else if (e.getSource() == sellButton) {
+      tradeButton.setText("Sell");
+    }
+    // Rest of the code...
+    if (e.getSource() == returnButton) {
+      new MenuPage().setVisible(true);
+      deletePage();
+    }
+    if (e.getSource() == priceButton) {
+      //do stuff if price button is pressed
+      try {
+        feeWarning.setVisible(false);
+        tickerSymbol = stockName.getText().toUpperCase();
+        if(GetStockInfo.stockExists(tickerSymbol)){
+          if(sellButton.isSelected())
+            tradeButton.setText("Sell");
+          else if(buyButton.isSelected())
+            tradeButton.setText("Buy");
+            if(GetStockInfo.getType(tickerSymbol).equals("ETF"))
+              feeWarning.setVisible(true);
+          //Side bar details
+          fullStockName.setForeground(Color.WHITE);
+          fullStockName.setText("<html>" + GetStockInfo.getFullName(tickerSymbol) + "</html>");
+          stockSymbol.setText(tickerSymbol);
+          pricePerShare.setText("$"+GetStockInfo.getPrice(tickerSymbol)+"/share");
+          if(USER.getNumberOfShares(tickerSymbol) > 0)
+            currOwnedShares.setText("<html>Currently owned shares: " + USER.getNumberOfShares(tickerSymbol) + "</html>");
+          else
+            currOwnedShares.setText("<html>You do not currently own any "+tickerSymbol+" shares</html>");
+          typeStock.setText("Type: " + GetStockInfo.getType(tickerSymbol));
+
+          detailPanel.setVisible(true);
+          quantityLabel.setVisible(true);
+          quantityInput.setVisible(true);
+          tradeButton.setVisible(true);
+        }
+        else{
+          fullStockName.setForeground(Color.RED);
+          fullStockName.setText("<html>Stock does not exist!</html>");
+          stockSymbol.setText("");
+          pricePerShare.setText("");
+          currOwnedShares.setText("");
+          typeStock.setText("");
+          quantityLabel.setVisible(false);
+          quantityInput.setVisible(false);
+          tradeButton.setVisible(false);
+          tradeMsg.setText("");
+
+        }
+      } catch (Exception ex) {
+        throw new RuntimeException(ex);
+      }
+
+    }
+    else if (e.getSource() == tradeButton) {
+
+      //If the user wants to buy
+      if (buyButton.isSelected()) {
+        try {
+          if(USER.buyStock(Integer.parseInt(quantityInput.getText()), stockName.getText().toUpperCase())){
+            tradeMsg.setForeground(Color.GREEN);
+            tradeMsg.setText("Successful Purchase!");
+            tradeButton.setVisible(false);
+            quantityInput.setVisible(false);
+            quantityLabel.setVisible(false);
+          }
+          else{
+            tradeMsg.setForeground(Color.RED);
+            tradeMsg.setText("Insufficient Funds");
+          }
+        }catch(Exception err){
+          tradeMsg.setText("Invalid Input");
+          tradeMsg.setForeground(Color.RED);
+        }
+      }
+      //If the user wants to sell
+      else if (sellButton.isSelected()) {
+        try {
+          if (USER.sellStock(Integer.parseInt(quantityInput.getText()), stockName.getText().toUpperCase())) {
+            tradeMsg.setForeground(Color.GREEN);
+            tradeMsg.setText("Successful Sell!");
+          }
+          else {
+            tradeMsg.setForeground(Color.RED);
+            tradeMsg.setText("Insufficient Stocks");
+          }
+        } catch (Exception err) {
+          tradeMsg.setText("Invalid Input");
+          tradeMsg.setForeground(Color.RED);
+        }
+      }
+
+      balanceLabel.setText("Balance: $"+Portfolio.df.format(USER.getBalance()));
+      if(USER.getNumberOfShares(tickerSymbol) > 0)
+        currOwnedShares.setText("<html>Currently owned shares: " + USER.getNumberOfShares(tickerSymbol) + "</html>");
+      else
+        currOwnedShares.setText("<html>You do not currently own any "+tickerSymbol+" shares</html>");
+    }
+  }
+}
