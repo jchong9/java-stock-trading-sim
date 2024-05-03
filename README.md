@@ -8,4 +8,4 @@ This simulator was a final project for my Computer Science course in 2023 and wa
 - HTML
 - CSS
 - Java
-- JQuery
+- PHP
